@@ -11,7 +11,7 @@ Download testing dataset of tree:
 $ python .\download_dataset.py --scene tree --mode test
 
 """
-#please let this work
+
 import requests
 import os
 import argparse
