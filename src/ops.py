@@ -39,13 +39,13 @@ def resnet_cyclegan(inputs, output_channles, activation, prefix, args):
                    padding="VALID", name="conv2d", do_norm=True, do_relu=True,
                    relufactor=0):
         with tf.variable_scope(name):
-            conv = tf.contrib.layers.conv2d(
+            conv = tf.compat.v1.layers.conv2d( #TESTING NEW FUNCTION
                 inputconv, o_d, f_w, s_w, padding,
-                activation_fn=None,
-                weights_initializer=tf.truncated_normal_initializer(
-                    stddev=stddev
-                ),
-                biases_initializer=tf.constant_initializer(0.0)
+                activation=None,
+                #weights_initializer=tf.truncated_normal_initializer(
+                #    stddev=stddev
+                #),
+                bias_initializer=tf.constant_initializer(0.0)
             )
             if do_norm:
                 conv = instance_norm(conv)
@@ -63,12 +63,12 @@ def resnet_cyclegan(inputs, output_channles, activation, prefix, args):
                      do_norm=True, do_relu=True, relufactor=0):
         with tf.variable_scope(name):
 
-            conv = tf.contrib.layers.conv2d_transpose(
+            conv = tf.compat.v1.layers.conv2d_transpose( #TESTING NEW FUNCTION
                 inputconv, o_d, [f_h, f_w],
                 [s_h, s_w], padding,
-                activation_fn=None,
-                weights_initializer=tf.truncated_normal_initializer(stddev=stddev),
-                biases_initializer=tf.constant_initializer(0.0)
+                activation=None,
+                #weights_initializer=tf.truncated_normal_initializer(stddev=stddev),
+                bias_initializer=tf.constant_initializer(0.0)
             )
 
             if do_norm:
@@ -189,7 +189,7 @@ def create_train_op(lr, beta1, beta2, loss, vars, prefix="", args=None):
             train_op = solver.apply_gradients(grad)
         return train_op
 
-def compute_number_of_parameters(var_lists=tf.trainable_variables, verbose=False):#need to fix train var on this line 
+def compute_number_of_parameters(var_lists=tf.trainable_variables(), verbose=False):#need to fix train var on this line 
     total_parameters = 0
     for variable in var_lists:
         shape = variable.get_shape()
