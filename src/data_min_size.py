@@ -21,7 +21,7 @@ def parse_tfrecord_tf(record, args):
         'mask': tf.FixedLenFeature([], tf.string),
         'index': tf.FixedLenFeature([], tf.string)
         })
-    
+    #easter egg
     shape_color_basis = features["shape"]
     shape_uv = tf.convert_to_tensor([shape_color_basis[0],shape_color_basis[1], 2], dtype=tf.int64)
     shape_mask = tf.convert_to_tensor([shape_color_basis[0],shape_color_basis[1], 1], dtype=tf.int64)
