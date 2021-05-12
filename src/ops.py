@@ -22,11 +22,11 @@ def resnet_cyclegan(inputs, output_channles, activation, prefix, args):
         with tf.variable_scope("instance_norm"):
             epsilon = 1e-5
             mean, var = tf.nn.moments(x, [1, 2], keep_dims=True)
-            scale = tf.get_variable('scale', [x.get_shape()[-1]],
+            scale = tf.Variable('scale', [x.get_shape()[-1]],
                                     initializer=tf.truncated_normal_initializer(
                                         mean=1.0, stddev=0.02
             ))
-            offset = tf.get_variable(
+            offset = tf.Variable(
                 'offset', [x.get_shape()[-1]],
                 initializer=tf.constant_initializer(0.0)
             )

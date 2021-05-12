@@ -92,7 +92,7 @@ def create_neural_texture_single(resolution = 512, channels = 16, init_type="glo
     elif init_type == "uniform":
         init = tf.initializers.uniform_unit_scaling()
 
-    neural_texture = tf.get_variable(name='neural_texture', shape = shape, dtype=tf.float32, trainable=True, initializer=init)
+    neural_texture = tf.Variable(name='neural_texture', shape = shape, dtype=tf.float32, trainable=True, initializer=init)
     return neural_texture
 
 def sample_texture_single(texture, uvs, mode = 'bilinear'):
@@ -125,7 +125,7 @@ def create_neural_texture_hierarchy(resolution = 512, channels = 16, levels = 4,
         elif init_type == "uniform":
             init = tf.initializers.uniform_unit_scaling()
 
-        neural_texture_hierarchy.append(tf.get_variable(name='neural_texture_%d' % level, shape = shape, dtype=tf.float32, trainable=True, initializer=init))
+        neural_texture_hierarchy.append(tf.Variable(name='neural_texture_%d' % level, shape = shape, dtype=tf.float32, trainable=True, initializer=init))
 
     return neural_texture_hierarchy
 
@@ -148,7 +148,7 @@ def create_neural_texture_hierarchy_mipmap(resolution = 512, channels = 16, leve
     neural_texture_hierarchy = []
     shape = (resolution, resolution, channels)
 
-    neural_texture_hierarchy.append(tf.get_variable(name='neural_texture_%d' % 0, shape = shape, dtype=tf.float32, trainable=True, initializer=tf.initializers.glorot_uniform()))
+    neural_texture_hierarchy.append(tf.Variable(name='neural_texture_%d' % 0, shape = shape, dtype=tf.float32, trainable=True, initializer=tf.initializers.glorot_uniform()))
 
     for level in range(1, levels):
         t = avg_downsample(neural_texture_hierarchy[-1])
