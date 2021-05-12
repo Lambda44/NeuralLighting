@@ -1,5 +1,7 @@
-import tensorflow as tf
+
 import math
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 """
 (x - min_x) / (max_x - min_x) = (y - min_y) / (max_y - min_y)

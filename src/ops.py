@@ -4,7 +4,8 @@
 from __future__ import division
 
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import math
 
 
@@ -22,11 +23,11 @@ def resnet_cyclegan(inputs, output_channles, activation, prefix, args):
         with tf.variable_scope("instance_norm"):
             epsilon = 1e-5
             mean, var = tf.nn.moments(x, [1, 2], keep_dims=True)
-            scale = tf.Variable('scale', [x.get_shape()[-1]],
+            scale = tf.get_variable('scale', [x.get_shape()[-1]],
                                     initializer=tf.truncated_normal_initializer(
                                         mean=1.0, stddev=0.02
             ))
-            offset = tf.Variable(
+            offset = tf.get_variable(
                 'offset', [x.get_shape()[-1]],
                 initializer=tf.constant_initializer(0.0)
             )
@@ -188,7 +189,7 @@ def create_train_op(lr, beta1, beta2, loss, vars, prefix="", args=None):
             train_op = solver.apply_gradients(grad)
         return train_op
 
-def compute_number_of_parameters(var_lists=tf.trainable_variables(), verbose=False):
+def compute_number_of_parameters(var_lists=tf.trainable_variables, verbose=False):#need to fix train var on this line 
     total_parameters = 0
     for variable in var_lists:
         shape = variable.get_shape()

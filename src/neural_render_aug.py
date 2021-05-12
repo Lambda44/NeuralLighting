@@ -3,7 +3,8 @@
 
 from neural_texture import create_neural_texture, sample_texture
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import collections
 
 from ops import resnet_cyclegan

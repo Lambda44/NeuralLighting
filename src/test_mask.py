@@ -3,7 +3,8 @@ import os
 import sys
 import numpy as np
 import cv2
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 from tqdm import tqdm
 from ops import resnet_cyclegan
