@@ -1,5 +1,4 @@
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
+import tensorflow as tf
 
 def compute_loss(outputs, targets, method="l1"):
     if method == 'l1':
@@ -41,4 +40,3 @@ def L2GradLoss(outputs, targets, weight=1.0):
 
 def BinaryLoss(outputs, targets):
     return tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=outputs, labels = targets))
-

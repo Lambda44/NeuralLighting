@@ -1,7 +1,6 @@
 import argparse
 import os
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
+import tensorflow as tf
 import sys
 from tqdm import tqdm
 
@@ -157,4 +156,3 @@ if __name__ == '__main__':
     logger.info('---Finished Training.---')
     saver.save(sess, args.logDir + r'/{}.tfmodel'.format(step))
     saver.save(sess, args.logDir + r'/latest_model.tfmodel')
-

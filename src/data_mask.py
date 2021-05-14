@@ -1,10 +1,9 @@
 import numpy as np
 import glob
 import os
-import tensorflow.compat.v1 as tf
-
+import tensorflow as tf
 import collections
-tf.disable_v2_behavior()
+
 
 Dataset = collections.namedtuple("Dataset", "iterator, uv, mask, index")
 

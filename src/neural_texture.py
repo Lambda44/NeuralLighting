@@ -1,6 +1,4 @@
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
-
+import tensorflow as tf
 from ops import avg_downsample
 
 """
@@ -206,5 +204,3 @@ def sample_texture_hierarchy_mipmap(textures, uvs):
 
     result = tf.reduce_sum(result, axis = 0)
     return result 
-
-

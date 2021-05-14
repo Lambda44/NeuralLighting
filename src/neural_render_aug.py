@@ -3,8 +3,7 @@
 
 from neural_texture import create_neural_texture, sample_texture
 
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
+import tensorflow as tf
 import collections
 
 from ops import resnet_cyclegan
@@ -144,4 +143,3 @@ def create_test_model(dataset, args):
         sampled_texture, reduced_basis, multiplied_texture, output, reconstruct = neural_render(neural_texture, dataset.uv,  dataset.index, basis, args)
  
     return reconstruct
-

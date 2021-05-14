@@ -1,7 +1,5 @@
-
+import tensorflow as tf
 import math
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
 
 """
 (x - min_x) / (max_x - min_x) = (y - min_y) / (max_y - min_y)
@@ -70,6 +68,3 @@ class LogIOMapper(IOMapper):
         y = tf.exp(y) # => [1/e, M + 1/e]
         y = linear_map(y, 1.0/math.e, self.M + 1.0/math.e, 0.0, self.M) # => [0, M]
         return y
-
-
-
