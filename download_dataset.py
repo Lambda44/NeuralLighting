@@ -2,13 +2,13 @@
 Example:
 
 Download the training dataset of tree:
-$ python .\download_dataset.py --scene tree --mode train
+$ python ./download_dataset.py --scene tree --mode train
 
 Download subset of training dataset of tree:
-$ python .\download_dataset.py --scene tree --mode train --cluster_indices 0,3,5
+$ python ./download_dataset.py --scene tree --mode train --cluster_indices 0,3,5
 
 Download testing dataset of tree:
-$ python .\download_dataset.py --scene tree --mode test
+$ python ./download_dataset.py --scene tree --mode test
 
 """
 

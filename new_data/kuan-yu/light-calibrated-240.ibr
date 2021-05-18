@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Project>
+<ViewSet src="light-calibrated-240.ibr.vset"/>
+<CameraList>
+<Camera azimuth="-0.6616230010986328" fov="39.59775270904986" inclination="8.665736198425293" locked="false" log10Distance="0.14266750356873154" lookAtX="0.0" lookAtY="0.0" lookAtZ="0.0" name="Free Camera" orthographic="false" twist="0.0"/>
+</CameraList>
+<EnvironmentList/>
+<LightGroupList>
+<LightGroup locked="false" name="New Group">
+<LightInstance azimuth="0.0" color="0xffffffff" inclination="0.0" intensity="1.0" locked="false" log10Distance="0.0" name="X" spotSize="90.0" spotTaper="0.0" targetX="0.0" targetY="0.0" targetZ="0.0"/>
+</LightGroup>
+</LightGroupList>
+<ObjectPoseList>
+<Camera centerX="0.0" centerY="0.0" centerZ="0.0" locked="false" name="Default Pose" rotateX="0.0" rotateY="0.0" rotateZ="0.0"/>
+</ObjectPoseList>
+</Project>
