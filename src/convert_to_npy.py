@@ -8,7 +8,7 @@ import pandas as pd
 
 directory = "new_data/kuan-yu/subset/"
 outputPath = "new_data/kuan-yu/output/"
-
+count=0
 imageList= os.listdir(directory)
 assert len(imageList)>0, "Images not loaded in correctly"
 
@@ -18,10 +18,10 @@ for current in imageList:
         print(directory+current)
         a= Image.open(directory+ current)
         data= np.array(a)
-        data.tofile(outputPath+'data.csv',sep=', ')
-       # df= pd.DataFrame(data)
-       # pd.DataFrame(data).to_csv(outputPath+"test.csv") #the output 
-   
+        path= outputPath+ 'image_'+str(count)+'.npy'
+        data.tofile(str(path),sep=', ')
+        count+=1
+
 
 
 
