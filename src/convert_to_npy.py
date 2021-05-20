@@ -6,7 +6,7 @@ import os
 #for saving the numpy array as a csv
 import pandas as pd
 
-directory = "new_data/kuan-yu/subset/"
+directory = "new_data/kuan-yu/2048/"
 outputPath = "new_data/kuan-yu/output/"
 count=0
 imageList= os.listdir(directory)
