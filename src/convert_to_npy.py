@@ -39,7 +39,7 @@ outputPath = "new_data/kuan-yu/output/image/"
 
 directory = "new_data/kuan-yu/blender/lambert/"
 outputPath = "new_data/kuan-yu/output/basis/"
-convertBasisToNpy(directory, outputPath, 0)
+#convertBasisToNpy(directory, outputPath, 0)
 
 directory = "new_data/kuan-yu/blender/ct_02/"
 outputPath = "new_data/kuan-yu/output/basis/"
