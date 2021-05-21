@@ -72,4 +72,4 @@ outputPath = "new_data/kuan-yu/output/basis/"
 
 directory = "new_data/kuan-yu/output/IBRelight"
 outputPath = "new_data/kuan-yu/output/UV/"
-convertBasisToNpy(directory, outputPath)
+convertUVToNpy(directory, outputPath)
