@@ -34,27 +34,27 @@ def convertBasisToNpy(directory, outputPath, renderMode):
 
 
 directory = "new_data/kuan-yu/2048/"
-outputPath = "new_data/kuan-yu/output/image"
+outputPath = "new_data/kuan-yu/output/image/"
 #convertImagesToNpy(directory,outputPath)
 
 directory = "new_data/kuan-yu/blender/lambert/"
-outputPath = "new_data/kuan-yu/output/basis"
+outputPath = "new_data/kuan-yu/output/basis/"
 convertBasisToNpy(directory, outputPath, 0)
 
 directory = "new_data/kuan-yu/blender/ct_02/"
-outputPath = "new_data/kuan-yu/output/basis"
+outputPath = "new_data/kuan-yu/output/basis/"
 convertBasisToNpy(directory, outputPath, 1)
 
 directory = "new_data/kuan-yu/blender/ct_05/"
-outputPath = "new_data/kuan-yu/output/basis"
+outputPath = "new_data/kuan-yu/output/basis/"
 convertBasisToNpy(directory, outputPath, 2)
 
 directory = "new_data/kuan-yu/blender/ct_13/"
-outputPath = "new_data/kuan-yu/output/basis"
+outputPath = "new_data/kuan-yu/output/basis/"
 convertBasisToNpy(directory, outputPath, 3)
 
 directory = "new_data/kuan-yu/blender/ct_34/"
-outputPath = "new_data/kuan-yu/output/basis"
+outputPath = "new_data/kuan-yu/output/basis/"
 convertBasisToNpy(directory, outputPath, 4)
 
 
