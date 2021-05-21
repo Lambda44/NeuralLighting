@@ -39,7 +39,7 @@ def convertUVToNpy(directory, outputPath):
 
     for current in imageList:
         print(directory+current)
-        a= Image.open(directory+ current)
+        a= Image.open(directory+current)
         data= np.array(a)
         path= outputPath+ 'uv_'+str(count)+'.npy'
         data.tofile(str(path),sep=', ')
@@ -70,6 +70,6 @@ directory = "new_data/kuan-yu/blender/ct_34/"
 outputPath = "new_data/kuan-yu/output/basis/"
 #convertBasisToNpy(directory, outputPath, 4)
 
-directory = "new_data/kuan-yu/output/IBRelight"
+directory = "new_data/kuan-yu/output/IBRelight/"
 outputPath = "new_data/kuan-yu/output/UV/"
 convertUVToNpy(directory, outputPath)
