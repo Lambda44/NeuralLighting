@@ -45,17 +45,14 @@ def convertUVToNpy(directory, outputPath):
         data.tofile(str(path),sep=', ')
         count+=1
 
-def convertMaskToPNG(directory, outputPath):
+def convertMaskToPNG(directory):
     count=0
     imageList= os.listdir(directory)
     assert len(imageList)>0, "Images not loaded in correctly"
 
     for current in imageList:
         print(directory+current)
-        a= Image.open(directory+current)
-        data= np.array(a)
-        path= outputPath+ 'mask_'+str(count)+'.png'
-        data.tofile(str(path),sep=', ')
+        os.rename(directory+current, directory+'mask_'+str(count)+'.png')
         count+=1
 
 
@@ -87,6 +84,5 @@ directory = "new_data/kuan-yu/output/IBRelight_UV/"
 outputPath = "new_data/kuan-yu/output/UV/"
 #convertUVToNpy(directory, outputPath)
 
-directory = "new_data/kuan-yu/output/IBRelight_Mask/"
-outputPath = "new_data/kuan-yu/output/mask/"
-convertMaskToPNG(directory, outputPath)
+directory = "new_data/kuan-yu/output/mask/"
+convertMaskToPNG(directory)
