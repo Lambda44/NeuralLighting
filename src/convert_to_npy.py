@@ -45,7 +45,7 @@ def convertUVToNpy(directory, outputPath):
         data.tofile(str(path),sep=', ')
         count+=1
 
-def convertMaskToNpy(directory, outputPath):
+def convertMaskToPNG(directory, outputPath):
     count=0
     imageList= os.listdir(directory)
     assert len(imageList)>0, "Images not loaded in correctly"
@@ -54,7 +54,7 @@ def convertMaskToNpy(directory, outputPath):
         print(directory+current)
         a= Image.open(directory+current)
         data= np.array(a)
-        path= outputPath+ 'mask_'+str(count)+'.npy'
+        path= outputPath+ 'mask_'+str(count)+'.png'
         data.tofile(str(path),sep=', ')
         count+=1
 
@@ -89,4 +89,4 @@ outputPath = "new_data/kuan-yu/output/UV/"
 
 directory = "new_data/kuan-yu/output/IBRelight_Mask/"
 outputPath = "new_data/kuan-yu/output/mask/"
-convertMaskToNpy(directory, outputPath)
+convertMaskToPNG(directory, outputPath)
