@@ -1,6 +1,7 @@
 
 import numpy as np #the funny statment 
 from PIL import Image
+import cv2
 import os
 #for saving the numpy array as a csv
 import pandas as pd
@@ -12,11 +13,14 @@ def convertImagesToNpy(directory, outputPath):
     assert len(imageList)>0, "Images not loaded in correctly"
 
     for current in imageList:
+        img = cv2.imread(os.path.join(directory, current))
+        img = img.astype(np.float32) / 255.0  # [0, 255] ==> [0, 1]
+        img = img ** 2.2
+        img = img[...,::-1] # BGR ==> RGB
+
         print(directory+current)
-        a= Image.open(directory+ current)
-        data= np.array(a)
-        path= outputPath+ 'image_'+str(count)+'.npy'
-        data.tofile(str(path),sep=', ')
+        np.save(os.path.join(outputPath, "image_%d.npy" % count), img)
+
         count+=1
 
 def convertBasisToNpy(directory, outputPath, renderMode):
@@ -25,11 +29,14 @@ def convertBasisToNpy(directory, outputPath, renderMode):
     assert len(imageList)>0, "Images not loaded in correctly"
 
     for current in imageList:
+        img = cv2.imread(os.path.join(directory, current))
+        img = img.astype(np.float32) / 255.0  # [0, 255] ==> [0, 1]
+        img = img ** 2.2
+        img = img[...,::-1] # BGR ==> RGB
+
         print(directory+current)
-        a= Image.open(directory+ current)
-        data= np.array(a)
-        path= outputPath+ 'basis'+str(renderMode)+'_'+str(count)+'.npy'
-        data.tofile(str(path),sep=', ')
+        np.save(os.path.join(outputPath, "basis%f_%d.npy" % (renderMode, count)), img)
+
         count+=1
 
 def convertUVToNpy(directory, outputPath):
@@ -38,11 +45,14 @@ def convertUVToNpy(directory, outputPath):
     assert len(imageList)>0, "Images not loaded in correctly"
 
     for current in imageList:
+        img = cv2.imread(os.path.join(directory, current))
+        img = img.astype(np.float32) / 255.0  # [0, 255] ==> [0, 1]
+        img = img ** 2.2
+        img = img[...,::-1] # BGR ==> RGB
+
         print(directory+current)
-        a= Image.open(directory+current)
-        data= np.array(a)
-        path= outputPath+ 'uv_'+str(count)+'.npy'
-        data.tofile(str(path),sep=', ')
+        np.save(os.path.join(outputPath, "uv_%d.npy" % count), img)
+
         count+=1
 
 def convertMaskToPNG(directory):
@@ -85,4 +95,4 @@ outputPath = "new_data/kuan-yu/output/UV/"
 #convertUVToNpy(directory, outputPath)
 
 directory = "new_data/kuan-yu/output/mask/"
-convertMaskToPNG(directory)
+#convertMaskToPNG(directory)
