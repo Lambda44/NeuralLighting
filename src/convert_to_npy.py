@@ -35,7 +35,7 @@ def convertBasisToNpy(directory, outputPath, renderMode):
         img = img[...,::-1] # BGR ==> RGB
 
         print(directory+current)
-        np.save(os.path.join(outputPath, "basis%f_%d.npy" % (renderMode, count)), img)
+        np.save(os.path.join(outputPath, "basis%d_%d.npy" % (renderMode, count)), img)
 
         count+=1
 
@@ -72,23 +72,23 @@ outputPath = "new_data/kuan-yu/output/image/"
 
 directory = "new_data/kuan-yu/blender/lambert/"
 outputPath = "new_data/kuan-yu/output/basis/"
-#convertBasisToNpy(directory, outputPath, 0)
+convertBasisToNpy(directory, outputPath, 0)
 
 directory = "new_data/kuan-yu/blender/ct_02/"
 outputPath = "new_data/kuan-yu/output/basis/"
-#convertBasisToNpy(directory, outputPath, 1)
+convertBasisToNpy(directory, outputPath, 1)
 
 directory = "new_data/kuan-yu/blender/ct_05/"
 outputPath = "new_data/kuan-yu/output/basis/"
-#convertBasisToNpy(directory, outputPath, 2)
+convertBasisToNpy(directory, outputPath, 2)
 
 directory = "new_data/kuan-yu/blender/ct_13/"
 outputPath = "new_data/kuan-yu/output/basis/"
-#convertBasisToNpy(directory, outputPath, 3)
+convertBasisToNpy(directory, outputPath, 3)
 
 directory = "new_data/kuan-yu/blender/ct_34/"
 outputPath = "new_data/kuan-yu/output/basis/"
-#convertBasisToNpy(directory, outputPath, 4)
+convertBasisToNpy(directory, outputPath, 4)
 
 directory = "new_data/kuan-yu/output/IBRelight_UV/"
 outputPath = "new_data/kuan-yu/output/UV/"
