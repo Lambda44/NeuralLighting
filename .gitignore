@@ -10,6 +10,5 @@ test_results/*
 log_results/*
 new_data/kuan-yu/blender/*
 new_data/kuan-yu/output/*
+new_data/kuan-yu/dataset/*
 
-preprocess/Users/brend/Documents/GitHub/NeuralLighting/new_data/kuan-yu/dataset/log.txt
-preprocess/Users/brend/Documents/GitHub/NeuralLighting/new_data/kuan-yu/dataset/shuffle_indices.txt

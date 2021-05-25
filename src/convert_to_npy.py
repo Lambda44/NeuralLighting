@@ -17,6 +17,7 @@ def convertImagesToNpy(directory, outputPath):
         img = img.astype(np.float32) / 255.0  # [0, 255] ==> [0, 1]
         img = img ** 2.2
         img = img[...,::-1] # BGR ==> RGB
+        img = img.astype(np.float16)
 
         print(directory+current)
         np.save(os.path.join(outputPath, "image_%d.npy" % count), img)
@@ -33,6 +34,7 @@ def convertBasisToNpy(directory, outputPath, renderMode):
         img = img.astype(np.float32) / 255.0  # [0, 255] ==> [0, 1]
         img = img ** 2.2
         img = img[...,::-1] # BGR ==> RGB
+        img = img.astype(np.float16)
 
         print(directory+current)
         np.save(os.path.join(outputPath, "basis%d_%d.npy" % (renderMode, count)), img)

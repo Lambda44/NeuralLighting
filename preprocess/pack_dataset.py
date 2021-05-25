@@ -172,7 +172,7 @@ def create_dataset(args):
             for idx in part_indices: 
                
                 if os.path.exists(os.path.join(img_data_dir, 'image_%d.npy' % idx)):
-                    color = np.load( os.path.join(img_data_dir, 'image_%d.npy' % idx), allow_pickle=True )
+                    color = np.load( os.path.join(img_data_dir, 'image_%d.npy' % idx))
                 else:
                     if count_warnings < 10:
                         print("[Warning] No color.")
@@ -188,15 +188,16 @@ def create_dataset(args):
                     count_warnings += 1
                     mask = np.ones((512,512,1), dtype=np.uint8)*255
 
-                uv = np.load( os.path.join(uv_data_dir, 'uv_%d.npy' % idx), allow_pickle=True) 
+                uv = np.load( os.path.join(uv_data_dir, 'uv_%d.npy' % idx)) 
 
                 basis = []
                 for k in args.basis_lists:
-                    if args.real and not os.path.exists(os.path.join(basis_data_dir, 'basis%d_%d.npy' % (k, idx))):
+                    #if args.real and not os.path.exists(os.path.join(basis_data_dir, 'basis%d_%d.npy' % (k, idx))):
+                    if not os.path.exists(os.path.join(basis_data_dir, 'basis%d_%d.npy' % (k, idx))):
                         tmp_basis_data_dir = os.path.join(data_dir, "basis2")
-                        basis.append(np.load(os.path.join(tmp_basis_data_dir, 'basis%d_%d.npy' % (k, idx)), allow_pickle=True))
+                        basis.append(np.load(os.path.join(tmp_basis_data_dir, 'basis%d_%d.npy' % (k, idx))))
                     else:
-                        basis.append(np.load(os.path.join(basis_data_dir, 'basis%d_%d.npy' % (k, idx)), allow_pickle=True))
+                        basis.append(np.load(os.path.join(basis_data_dir, 'basis%d_%d.npy' % (k, idx))))
                 basis = np.concatenate(basis, axis = -1)
                 
 
