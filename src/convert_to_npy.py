@@ -57,14 +57,21 @@ def convertUVToNpy(directory, outputPath):
 
         count+=1
 
-def convertMaskToPNG(directory):
+def convertMaskToNpy(directory, outputPath):
     count=0
     imageList= os.listdir(directory)
     assert len(imageList)>0, "Images not loaded in correctly"
 
     for current in imageList:
-        print(directory+current)
-        os.rename(directory+current, directory+'mask_'+str(count)+'.png')
+        img = cv2.imread(os.path.join(directory, current))
+        img = img.astype(np.float32) / 255.0  # [0, 255] ==> [0, 1]
+        img = img ** 2.2
+        img = img[...,::-1] # BGR ==> RGB
+        img = img.astype(np.uint8)
+
+        print(directory+'_'+current)
+        np.save(os.path.join(outputPath, "mask_%d.npy" % count), img)
+
         count+=1
 
 
@@ -74,27 +81,28 @@ outputPath = "new_data/kuan-yu/output/image/"
 
 directory = "new_data/kuan-yu/blender/lambert/"
 outputPath = "new_data/kuan-yu/output/basis/"
-convertBasisToNpy(directory, outputPath, 0)
+#convertBasisToNpy(directory, outputPath, 0)
 
 directory = "new_data/kuan-yu/blender/ct_02/"
 outputPath = "new_data/kuan-yu/output/basis/"
-convertBasisToNpy(directory, outputPath, 1)
+#convertBasisToNpy(directory, outputPath, 1)
 
 directory = "new_data/kuan-yu/blender/ct_05/"
 outputPath = "new_data/kuan-yu/output/basis/"
-convertBasisToNpy(directory, outputPath, 2)
+#convertBasisToNpy(directory, outputPath, 2)
 
 directory = "new_data/kuan-yu/blender/ct_13/"
 outputPath = "new_data/kuan-yu/output/basis/"
-convertBasisToNpy(directory, outputPath, 3)
+#convertBasisToNpy(directory, outputPath, 3)
 
 directory = "new_data/kuan-yu/blender/ct_34/"
 outputPath = "new_data/kuan-yu/output/basis/"
-convertBasisToNpy(directory, outputPath, 4)
+#convertBasisToNpy(directory, outputPath, 4)
 
 directory = "new_data/kuan-yu/output/IBRelight_UV/"
 outputPath = "new_data/kuan-yu/output/UV/"
 #convertUVToNpy(directory, outputPath)
 
-directory = "new_data/kuan-yu/output/mask/"
-#convertMaskToPNG(directory)
+directory = "new_data/kuan-yu/output/IBRelight_Mask/"
+outputPath = "new_data/kuan-yu/output/mask/"
+convertMaskToNpy(directory, outputPath)
