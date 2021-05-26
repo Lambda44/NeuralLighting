@@ -57,20 +57,18 @@ def convertUVToNpy(directory, outputPath):
 
         count+=1
 
-def convertMaskToNpy(directory, outputPath):
+def convertMaskToGray(directory, outputPath):
     count=0
     imageList= os.listdir(directory)
     assert len(imageList)>0, "Images not loaded in correctly"
 
     for current in imageList:
         img = cv2.imread(os.path.join(directory, current))
-        img = img.astype(np.float32) / 255.0  # [0, 255] ==> [0, 1]
-        img = img ** 2.2
-        img = img[...,::-1] # BGR ==> RGB
-        img = img.astype(np.uint8)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        #img = img.astype(np.uint8)
 
         print(directory+'_'+current)
-        np.save(os.path.join(outputPath, "mask_%d.npy" % count), img)
+        cv2.imwrite(os.path.join(outputPath, "mask_%d.png" % count), img)
 
         count+=1
 
@@ -103,6 +101,6 @@ directory = "new_data/kuan-yu/output/IBRelight_UV/"
 outputPath = "new_data/kuan-yu/output/UV/"
 #convertUVToNpy(directory, outputPath)
 
-directory = "new_data/kuan-yu/output/IBRelight_Mask/"
+directory = "new_data/kuan-yu/output/mask_RGB/"
 outputPath = "new_data/kuan-yu/output/mask/"
-convertMaskToNpy(directory, outputPath)
+convertMaskToGray(directory, outputPath)
