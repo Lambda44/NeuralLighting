@@ -49,6 +49,7 @@ def convertUVToNpy(directory, outputPath):
     for current in imageList:
         img = cv2.imread(os.path.join(directory, current))
         img = cv2.cvtColor(img, cv2.COLOR_BGR2YUV) #unsure if this is the right way. in theory, this should work.
+        img = img.astype(np.float32)
         #img = img.astype(np.float32) / 255.0  # [0, 255] ==> [0, 1]
         #img = img ** 2.2
         #img = img[...,::-1] # BGR ==> RGB
