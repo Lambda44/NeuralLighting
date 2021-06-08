@@ -11,4 +11,5 @@ log_results/*
 new_data/kuan-yu/blender/*
 new_data/kuan-yu/output/*
 new_data/kuan-yu/dataset/*
-
+new_data/kuan-yu/subset/*
+new_data/kuan-yu/reducedData/*
