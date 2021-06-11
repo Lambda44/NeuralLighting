@@ -14,6 +14,7 @@ def convertImagesToNpy(directory, outputPath):
 
     for current in imageList:
         img = cv2.imread(os.path.join(directory, current))
+        img = cv2.resize(img, (512,512)) # should reduce size to 512x512, 1/4 of 2048x2048
         img = img.astype(np.float32) / 255.0  # [0, 255] ==> [0, 1]
         img = img ** 2.2
         img = img[...,::-1] # BGR ==> RGB
@@ -48,7 +49,7 @@ def convertUVToNpy(directory, outputPath):
 
     for current in imageList:
         img = cv2.imread(os.path.join(directory, current))
-        newImg = np.ndarray([2048, 2048, 2])
+        newImg = np.ndarray([512, 512, 2])
         newImg = img[:, :, 0:2]
         print(newImg.shape)
         newImg = newImg.astype(np.float32)
@@ -78,37 +79,33 @@ def convertMaskToGray(directory, outputPath):
 
 
 directory = "new_data/kuan-yu/2048/"
-outputPath = "new_data/kuan-yu/output/image/"
+outputPath = "new_data/reduced-size-ky/output/image/"
 #convertImagesToNpy(directory,outputPath)
 
-directory = "new_data/kuan-yu/blender/lambert/"
-outputPath = "new_data/kuan-yu/output/basis/"
-#convertBasisToNpy(directory, outputPath, 0)
+directory = "new_data/reduced-size-ky/blender/lambert/"
+outputPath = "new_data/reduced-size-ky/output/basis/"
+convertBasisToNpy(directory, outputPath, 0)
 
-directory = "new_data/kuan-yu/blender/ct_02/"
-outputPath = "new_data/kuan-yu/output/basis/"
-#convertBasisToNpy(directory, outputPath, 1)
+directory = "new_data/reduced-size-ky/blender/ct_02/"
+outputPath = "new_data/reduced-size-ky/output/basis/"
+convertBasisToNpy(directory, outputPath, 1)
 
-directory = "new_data/kuan-yu/blender/ct_05/"
-outputPath = "new_data/kuan-yu/output/basis/"
-#convertBasisToNpy(directory, outputPath, 2)
+directory = "new_data/reduced-size-ky/blender/ct_05/"
+outputPath = "new_data/reduced-size-ky/output/basis/"
+convertBasisToNpy(directory, outputPath, 2)
 
-directory = "new_data/kuan-yu/blender/ct_13/"
-outputPath = "new_data/kuan-yu/output/basis/"
-#convertBasisToNpy(directory, outputPath, 3)
+directory = "new_data/reduced-size-ky/blender/ct_13/"
+outputPath = "new_data/reduced-size-ky/output/basis/"
+convertBasisToNpy(directory, outputPath, 3)
 
-directory = "new_data/kuan-yu/blender/ct_34/"
-outputPath = "new_data/kuan-yu/output/basis/"
-#convertBasisToNpy(directory, outputPath, 4)
+directory = "new_data/reduced-size-ky/blender/ct_34/"
+outputPath = "new_data/reduced-size-ky/output/basis/"
+convertBasisToNpy(directory, outputPath, 4)
 
-directory = "new_data/kuan-yu/output/IBRelight_UV/"
-outputPath = "new_data/kuan-yu/output/UV/"
-#convertUVToNpy(directory, outputPath)
-
-directory = "new_data/kuan-yu/output/mask_RGB/"
-outputPath = "new_data/kuan-yu/output/mask/"
-#convertMaskToGray(directory, outputPath)
-
-directory = "new_data/kuan-yu/output/IBRelight_UV/"
-outputPath = "new_data/kuan-yu/output/UV/"
+directory = "new_data/reduced-size-ky/output/IBRelight_UV/"
+outputPath = "new_data/reduced-size-ky/output/UV/"
 convertUVToNpy(directory, outputPath)
+
+directory = "new_data/reduced-size-ky/output/mask_RGB/"
+outputPath = "new_data/reduced-size-ky/output/mask/"
+convertMaskToGray(directory, outputPath)
