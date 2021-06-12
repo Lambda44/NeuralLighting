@@ -14,7 +14,7 @@ def convertImagesToNpy(directory, outputPath):
 
     for current in imageList:
         img = cv2.imread(os.path.join(directory, current))
-        img = cv2.resize(img, (1024,1024)) # should reduce size to 512x512, 1/4 of 2048x2048
+        img = cv2.resize(img, (512,512)) # should reduce size to 512x512, 1/4 of 2048x2048
         img = img.astype(np.float32) / 255.0  # [0, 255] ==> [0, 1]
         img = img ** 2.2
         img = img[...,::-1] # BGR ==> RGB
@@ -49,7 +49,7 @@ def convertUVToNpy(directory, outputPath):
 
     for current in imageList:
         img = cv2.imread(os.path.join(directory, current))
-        newImg = np.ndarray([1024, 1024, 2])
+        newImg = np.ndarray([512, 512, 2])
         newImg = img[:, :, 0:2]
         print(newImg.shape)
         newImg = newImg.astype(np.float32)
